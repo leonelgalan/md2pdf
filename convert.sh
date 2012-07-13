@@ -1,0 +1,1 @@
+ruby -rubygems convert.rb $1 $2 && open $2

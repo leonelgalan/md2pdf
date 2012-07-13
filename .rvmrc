@@ -1,0 +1,5 @@
+rvm 1.9.3-p194@md2pdf --create
+
+if ! command -v bundle ; then
+  gem install bundler
+fi
