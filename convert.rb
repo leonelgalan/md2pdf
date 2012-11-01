@@ -17,8 +17,8 @@ get '/' do
 end
 
 post '/generate' do
-  html = GitHub::Markup.render('Markdown.md', params[:text])
-  kit = PDFKit.new(html, :page_size => 'Letter')
+  @html = GitHub::Markup.render('Markdown.md', params[:text])
+  kit = PDFKit.new(erb(:result, layout: false), :page_size => 'Letter')
 
   headers 'Content-Type' => 'application/pdf'
   headers 'Content-Disposition' => 'attachment; filename=Markdown.pdf'
