@@ -18,7 +18,12 @@ end
 
 post '/generate' do
   @html = GitHub::Markup.render('Markdown.md', params[:text])
-  kit = PDFKit.new(erb(:result, layout: false), :page_size => 'Letter')
+  kit = PDFKit.new( erb(:result, layout: false),
+    page_size: 'Letter',
+    margin_bottom: '0mm',
+    margin_left: '0mm',
+    margin_right: '0mm',
+    margin_top: '0mm' )
 
   headers 'Content-Type' => 'application/pdf'
   headers 'Content-Disposition' => 'attachment; filename=Markdown.pdf'
